@@ -151,18 +151,17 @@ let m = {
 
             case "seno":
 
-                p.operaciones.innerHTML = Math.sin(p.operaciones.innerHTML)*180/Math.PI;
-                p.resultado = true;
+               p.operaciones.innerHTML = Math.sin(Number(p.operaciones.innerHTML) * Math.PI / 180);
+               p.resultado = true;
 
             break;
 
             case "coseno":
 
-                p.operaciones.innerHTML = Math.cos(p.operaciones.innerHTML)*180/Math.PI;
-                p.resultado = true;
+              p.operaciones.innerHTML = Math.cos(Number(p.operaciones.innerHTML) * Math.PI / 180);
+              p.resultado = true;
 
             break;
-
         }
 
     },
