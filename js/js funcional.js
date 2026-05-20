@@ -1,3 +1,4 @@
+
 // crear las propiedades del objeto
 
 let p = {
@@ -7,7 +8,7 @@ let p = {
     digito: null,
     operaciones: document.querySelector("#operaciones"),
     cantisignos: 0,
-    catidecimal: false,
+    catdecimal: false,
     resultado: false
 
 };
@@ -24,32 +25,72 @@ let m = {
 
         }
 
+        document.addEventListener("keydown", m.oprimirteclado);
+
     },
 
     oprimirtecla: function (tecla) {
 
         p.accion = tecla.target.getAttribute("class");
         p.digito = tecla.target.innerHTML;
-        console.log(p.digito)
+
+        m.calculadora(p.accion, p.digito);
+
+    },
+
+    oprimirteclado: function (keyboard) {
+
+        p.digito = keyboard.key;
+
+        if(p.digito == "Enter"){
+
+            p.accion = "igual";
+            p.digito = "=";
+
+        }else if(p.digito == "."){
+
+            p.accion = "decimal";
+
+        }else if(p.digito == "+" ||
+                 p.digito == "-" ||
+                 p.digito == "*" ||
+                 p.digito == "/"){
+
+            p.accion = "signo";
+
+        }else if(p.digito >= 0 && p.digito <= 9){
+
+            p.accion = "numero";
+
+        }else{
+
+            return;
+        }
+
         m.calculadora(p.accion, p.digito);
 
     },
 
     calculadora: function (accion,digito) {
-
         switch (accion) {
+
             case "numero":
-                console.log("numero");
+
+                p.cantisignos = 0;
+
                 if(p.operaciones.innerHTML == 0)
                 {
+
                     p.operaciones.innerHTML = digito;
                 }else{
-                    //p.operaciones.innerHTML += digito;
+
                     if(p.resultado){
                         p.operaciones.innerHTML = digito;
                         p.resultado = false;
+
                     }else{
                         p.operaciones.innerHTML += digito;
+
                     }
 
                 }
@@ -58,42 +99,76 @@ let m = {
 
 
             case "signo":
-                console.log("signo");
-                p.cantisignos++;
+                p.cantisignos++
+                
                 if(p.cantisignos == 1){
-                    if(p.operaciones.innerHTML == 0){
-                        p.operaciones.innerHTML = 0;
-                    }else{
+
+                    if(p.operaciones.innerHTML != 0){
+
                         p.operaciones.innerHTML += digito;
-                        p.cantdecimal = true;
-                    }  
-                        
+                        p.catdecimal = false;
+
+                    }
+
                 }
-                   //console.log("signo")
-              break; 
-              
-              
+
+            break;
 
             case "decimal":
-                if(!p.operaciones){
+                if(!p.catdecimal){
                     p.operaciones.innerHTML += digito;
                     p.catdecimal = true;
+
                 }
-                //console.log("decimal")
-            break; 
-              
+
+            break;
 
             case "igual":
-                console.log("igual");
+
                 p.operaciones.innerHTML = eval(p.operaciones.innerHTML);
-                p.resultado = true
-                
+                p.resultado = true;
+                p.cantisignos = 0;
+
+            break;
+
         }
-           //console.log("igual")
-        
-           
+
+        switch (accion) {
+
+            case "raiz":
+
+                p.operaciones.innerHTML = Math.sqrt(p.operaciones.innerHTML);
+                p.resultado = true;
+
+            break;
+
+            case "cuadrado":
+
+                p.operaciones.innerHTML = Math.pow(p.operaciones.innerHTML,2);
+                p.resultado = true;
+
+            break;
+
+            case "seno":
+
+                p.operaciones.innerHTML = Math.sin(p.operaciones.innerHTML)*180/Math.PI;
+                p.resultado = true;
+
+            break;
+
+            case "coseno":
+
+                p.operaciones.innerHTML = Math.cos(p.operaciones.innerHTML)*180/Math.PI;
+                p.resultado = true;
+
+            break;
+
+        }
+
     },
+
     borrarcalculadora: function () {
+
         p.operaciones.innerHTML = 0;
 
     }
@@ -103,5 +178,4 @@ let m = {
 // iniciar
 
 m.inicio();
-
 
