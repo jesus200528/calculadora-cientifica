@@ -1,0 +1,186 @@
+
+/* ===== RESET ===== */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    list-style: none;
+}
+
+/* ===== BODY ===== */
+
+body{
+    background-color: #1e1e1e;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* ===== CALCULADORA ===== */
+
+#calculadora{
+    background-color: #2c2c2c;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.5);
+
+    background-image: url(/img/need.jpeg);
+}
+
+/* ===== TITULO ===== */
+
+h1{
+    color: white;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* ===== PANTALLA ===== */
+
+#operaciones{
+    width: 320px;
+    height: 70px;
+
+    background-color: black;
+    color: #00f7ff;
+
+    font-size: 32px;
+    text-align: right;
+    line-height: 70px;
+
+    padding: 0 15px;
+    margin-bottom: 15px;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+/* ===== CONTENEDOR BOTONES ===== */
+
+ul{
+    width: 320px;
+
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+
+    gap: 10px;
+}
+
+/* ===== BOTONES ===== */
+
+ul li{
+    height: 60px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 22px;
+    font-weight: bold;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+/* ===== EFECTOS ===== */
+
+ul li:hover{
+    opacity: 0.8;
+}
+
+ul li:active,
+#borrar:active{
+    transform: scale(0.95);
+}
+
+/* ===== NUMEROS ===== */
+
+.numero{
+    background-color: #3b3b3b;
+    color: white;
+}
+
+/* ===== SIGNOS ===== */
+
+.signo{
+    background-color: rgb(0, 59, 45);
+    color: white;
+}
+
+/* ===== DECIMAL ===== */
+
+.decimal{
+    background-color: #636e72;
+    color: white;
+}
+
+/* ===== IGUAL ===== */
+
+.igual{
+    background-color: #d63031;
+    color: white;
+}
+ 
+.raiz{
+     background-color: rgb(0, 199, 149);
+    color: white;
+}
+
+.cuadrado{
+    background-color: rgb(0, 199, 149);
+    color: white;
+}
+
+.seno{
+    background-color: rgb(0, 199, 149);
+    color: white;
+}
+
+.coseno{
+    background-color: rgb(0, 199, 149);
+    color: white;
+}
+
+
+
+.igual:hover{
+    background-color: #11110f;
+}
+
+/* ===== BOTON BORRAR ===== */
+
+#borrar{
+    width: 320px;
+    height: 55px;
+
+    background-color: #d63031;
+    color: white;
+
+    margin-top: 15px;
+
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+#borrar:hover{
+    background-color: #b71c1c;
+}
+
